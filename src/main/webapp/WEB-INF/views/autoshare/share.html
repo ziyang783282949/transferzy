@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport"
+	content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<meta name="description" content="畅玩助手">
+<title>邀请页</title>
+<link rel="stylesheet" href="/css/autoshare/style.css">
+<script>
+	var _czc = _czc || [];
+</script>
+</head>
+
+<body style="overflow: hidden;">
+	<header>
+		<div class="right">
+			<img src="/images/autoshare/icon.png" class="logo">
+		</div>
+	</header>
+	<section class="main ">
+		<div class="tit"></div>
+		<div class="bag"></div>
+		<div class="load">
+			<a class="clearfix" id="download" href="javascript:;"
+				onclick="downLoadApk();">立即下载</a>
+		</div>
+	</section>
+	<div id="mask" style="display: none">
+		<div class="mask"></div>
+		<div class="img"></div>
+	</div>
+
+	<script>
+		function getQueryString(name) {
+			var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+			var r = window.location.search.substr(1).match(reg);
+			if (r != null) {
+				return unescape(r[2]);
+			}
+			return null;
+		}
+
+		function downLoadApk() {
+			var fm = getQueryString("fm");
+			var timestamp = Date.parse(new Date());
+			if (is_weixin() == false) {
+				document.getElementById("mask").style.display = 'none';
+				window.location.href = "http://www.waevr.cn/download/autoplayer.apk";
+			} else {
+				document.getElementById("mask").style.display = 'block';
+			}
+		}
+
+		function is_weixin() {
+			var ua = navigator.userAgent.toLowerCase();
+			if (ua.match(/MicroMessenger/i) == "micromessenger") {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
+
+
+</body>
+</html>

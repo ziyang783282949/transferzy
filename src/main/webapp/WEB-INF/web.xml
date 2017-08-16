@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns="http://java.sun.com/xml/ns/javaee"   
+    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"   
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"   
+    id="WebApp_ID" version="2.5">
+	<display-name>porker</display-name>
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:conf/core/log4j.xml</param-value>
+	</context-param>
+	
+	
+	<!--字符编码filter -->
+	<filter>
+		<filter-name>setCharacterEncoding</filter-name>
+		<filter-class>
+			org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<!--shiro_filter -->
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	
+	<!--字符编码filter -->
+	<filter-mapping>
+		<filter-name>setCharacterEncoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!--shiro_filter -->
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- log4j日志 -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener
+		</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>porker</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:conf/core/porker-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!-- web service 用于微信支付回调等，微信的服务以webservice形式进行 -->
+	<servlet>
+		<servlet-name>porker_webservice</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<init-param>  
+      		<param-name>config-location</param-name>  
+      		<param-value>classpath:conf/core/webservice.xml</param-value>  
+  	 	</init-param> 
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>porker</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!-- 配置静态资源 一般Web应用服务器默认的Servlet名称是"default"，因此DefaultServletHttpRequestHandler可以找到它 -->
+	<!-- <servlet-mapping> <servlet-name>default</servlet-name> <url-pattern>*.js</url-pattern> 
+		</servlet-mapping> <servlet-mapping> <servlet-name>default</servlet-name> 
+		<url-pattern>*.css</url-pattern> </servlet-mapping> <servlet-mapping> <servlet-name>default</servlet-name> 
+		<url-pattern>*.html</url-pattern> </servlet-mapping> <servlet-mapping> <servlet-name>default</servlet-name> 
+		<url-pattern>*.htm</url-pattern> </servlet-mapping> -->
+	
+	<servlet-mapping>
+		<servlet-name>porker_webservice</servlet-name>
+		<url-pattern>/service/*</url-pattern>
+	</servlet-mapping>
+	
+	
+</web-app>

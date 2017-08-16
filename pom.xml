@@ -1,0 +1,275 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>core</groupId>
+	<artifactId>porkerticket</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>porkerticket</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version> 3.2.4.RELEASE  </version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.21</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>4.2.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.1.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>4.2.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cloudhopper.proxool</groupId>
+			<artifactId>proxool</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>4.2.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>4.2.1.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>4.2.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.18</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.1.15</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session</artifactId>
+			<version>1.0.2.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>1.4.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>3.2.9.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>3.2.9.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>3.2.9.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty</artifactId>
+			<version>4.0.0.Alpha8</version>
+		</dependency>
+		<!--apache shiro安全管理框架 -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		<!-- java 验证参数注解等 -->
+		<!-- <dependency> <groupId>javax.validation</groupId> <artifactId>validation-api</artifactId> 
+			<version>1.0.0.GA</version> </dependency> -->
+		<!-- log4j日志文件 -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.10</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+		<!--Apache Shiro所需的jar包 -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->  
+        <dependency>  
+            <groupId>javax.validation</groupId>  
+            <artifactId>validation-api</artifactId>  
+            <version>1.1.0.Final</version>  
+        </dependency>  
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->  
+        <dependency>  
+            <groupId>org.hibernate</groupId>  
+            <artifactId>hibernate-validator</artifactId>  
+            <version>5.2.4.Final</version>  
+        </dependency>  
+
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+			<classifier>jdk15</classifier>
+		</dependency>
+		<!-- <dependency> <groupId>xom</groupId> <artifactId>xom</artifactId> <version>1.2.5</version> 
+			</dependency> -->
+
+		<!-- webservice start -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-core</artifactId>
+			<version>3.0.0-milestone2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+			<version>3.0.0-milestone2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>3.0.0-milestone2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-extension-providers</artifactId>
+			<version>3.0.0-milestone2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-client</artifactId>
+			<version>3.0.0-milestone2</version>
+		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+	</dependencies>
+	<!-- webservice end -->
+
+	<build>
+		<finalName>porkerticket</finalName>
+	</build>
+</project>

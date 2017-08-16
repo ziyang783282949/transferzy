@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!--Converted at: Mon Aug 20 17:02:07 
+	CST 2012 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AutoRegisterModel">
+
+	<resultMap id="BaseResultMap" type="AutoRegisterModel">
+		<id column="id" jdbcType="DECIMAL" property="id" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+		<result column="imei" jdbcType="VARCHAR" property="imei" />
+		<result column="invitated_times" jdbcType="INTEGER" property="invitatedTimes" />
+		<result column="invitation_code" jdbcType="VARCHAR" property="invitationCode" />
+		<result column="parent_invitation_code" jdbcType="VARCHAR" property="parentInvitationCode" />
+	</resultMap>
+
+	<insert id="addEntity" parameterType="java.util.Map">
+		insert into 
+		tb_auto_register(
+			imei,create_time,end_time,invitation_code,parent_invitation_code
+		)values(
+			#{imei},#{createTime},#{endTime},#{invitationCode},#{parentInvitationCode}
+		)
+		
+	</insert>
+
+	<select id="findEntityListByCond" parameterType="java.util.Map" resultMap="BaseResultMap">
+	
+		select * from tb_auto_register
+		<trim prefix="where" prefixOverrides="and" >
+			
+			<if test="id != null">
+				and id=#{id} 
+			</if>
+			<if test="imei != null">
+				and imei=#{imei}
+			</if>
+			<if test="invitationCode != null">
+				and invitation_code=#{invitationCode}
+			</if>
+			<if test="parentInvitationCode != null">
+				and parent_invitation_code=#{parentInvitationCode}
+			</if>
+			<if test="createTimeUpper != null">
+				and create_time &lt; #{createTimeUpper}
+			</if>
+			<if test="createTimeLower != null">
+				and create_time &gt;= #{createTimeLower}
+			</if>
+			<if test="endTimeUpper != null">
+				and end_time &lt; #{endTimeUpper}
+			</if>
+			<if test="endTimeLower != null">
+				and end_time &gt;= #{endTimeLower}
+			</if>
+		</trim>
+		
+		order by create_time desc
+		
+	</select>
+
+	<update id="updateEntity" parameterType="java.util.Map">
+		update tb_auto_register
+		<trim suffixOverrides = ",">
+		<set>
+			<if test="imei != null">
+				imei=#{imei},
+			</if>
+			<if test="invitatedTimes != null">
+				invitated_times=#{invitatedTimes},
+			</if>
+			<if test="invitationCode != null">
+				invitation_code=#{invitationCode},
+			</if>
+			<if test="parentInvitationCode != null">
+				parent_invitation_code=#{parentInvitationCode},
+			</if>
+			<if test="endTime != null">
+				end_time=#{endTime},
+			</if>
+		</set>
+		</trim>
+		where id = #{id}
+	</update>
+	
+</mapper>

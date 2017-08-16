@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!--Converted at: Mon Aug 20 17:02:07 
+	CST 2012 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TicketModel">
+
+	<resultMap id="BaseResultMap" type="TicketModel">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="ticket_id" jdbcType="VARCHAR" property="ticketId" />
+		<result column="user_cardno" jdbcType="VARCHAR" property="userCardNo" />
+		<result column="ticket_misc" jdbcType="VARCHAR" property="ticketMisc" />
+		<result column="state" jdbcType="INTEGER" property="state" />
+		<result column="price" jdbcType="DECIMAL" property="price" />
+	</resultMap>
+
+	<insert id="addEntity" parameterType="java.util.Map">
+		insert into
+		tb_ticket(
+		ticket_id,user_cardno,ticket_misc,state,price
+		)values(
+		#{ticketId},#{userCardNo},#{ticketMisc},#{state},#{price}
+		)
+	</insert>
+
+	<select id="findEntityListByCond" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select * from tb_ticket
+		<trim prefix="where" prefixOverrides="and">
+
+			<if test="id != null">
+				and id=#{id}
+			</if>
+			<if test="ticketId != null">
+				and ticket_id=#{ticketId}
+			</if>
+			<if test="userCardNo != null">
+				and user_cardno=#{userCardNo}
+			</if>
+			<if test="state != null">
+				and state=#{state}
+			</if>
+		</trim>
+
+	</select>
+
+	<update id="updateEntity" parameterType="java.util.Map">
+		update tb_ticket
+		<trim suffixOverrides=",">
+			<set>
+				<if test="state != null">
+					state=#{state}
+				</if>
+			</set>
+		</trim>
+		where ticket_id = #{ticketId} and user_cardno =#{userCardNo}
+	</update>
+<update id="deleteEntity" parameterType="java.util.Map">
+		delete from tb_ticket
+		where
+		ticket_id = #{ticketId}
+	</update>
+</mapper>

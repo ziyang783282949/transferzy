@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><!--Converted at: Mon Aug 20 17:02:07 
+	CST 2012 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TaskModel">
+
+	<resultMap id="BaseResultMap" type="TaskModel">
+		<id column="id" jdbcType="DECIMAL" property="id" />
+		<result column="bonus" jdbcType="DECIMAL" property="bonus" />
+		<result column="merchant_order_id" jdbcType="VARCHAR" property="merchantOrderId" />
+		<result column="openid" jdbcType="VARCHAR" property="openId" />
+		<result column="merchant_id" jdbcType="DECIMAL" property="merchantId" />
+		<result column="merchant_name" jdbcType="VARCHAR" property="merchantName" />
+		<result column="order_time" jdbcType="TIMESTAMP" property="orderTime" />
+		<result column="order_status" jdbcType="DECIMAL" property="orderStatus" />
+		<result column="price" jdbcType="DECIMAL" property="price" />
+		<result column="pay_amount" jdbcType="DECIMAL" property="payAmount" />
+		<result column="points" jdbcType="DECIMAL" property="points" />
+		<result column="task_info" jdbcType="VARCHAR" property="taskInfo" />
+		<result column="task_type" jdbcType="TINYINT" property="taskType" />
+		<result column="todayCash" jdbcType="DECIMAL" property="todayCash" />
+		<result column="totalCash" jdbcType="DECIMAL" property="totalCash" />
+		<result column="availCash" jdbcType="DECIMAL" property="availCash" />
+	</resultMap>
+
+	<insert id="addEntity" parameterType="java.util.Map">
+		insert into 
+		tb_shop_task(
+			bonus,merchant_order_id,openid,order_time,order_status,price,pay_amount,merchant_id,merchant_name,points,task_info,task_type
+		)values(
+			#{bonus},#{merchantOrderId},#{openId},#{orderTime},#{orderStatus},#{price},#{payAmount},#{merchantId},#{merchantName},#{points},#{taskInfo},#{taskType}
+		)
+		
+	</insert>
+
+	<insert id="findEntityList" parameterType="java.util.List">
+		
+	</insert>
+	
+	<select id="findEntityListByCond" parameterType="java.util.Map" resultMap="BaseResultMap">
+	
+		select * from tb_shop_task
+		<trim prefix="where" prefixOverrides="and" >
+			
+			<if test="id != null">
+				and id=#{id} 
+			</if>
+			<if test="bonus != null">
+				and bonus=#{bonus} 
+			</if>
+			<if test="merchantOrderId != null">
+				and merchant_order_id=#{merchantOrderId} 
+			</if>
+			<if test="openId != null">
+				and openid=#{openId}
+			</if>
+			<if test="orderStatus != null">
+				and order_status=#{orderStatus}
+			</if>
+			<if test="orderTimeUpper != null">
+				and order_time &lt; #{orderTimeUpper}
+			</if>
+			<if test="orderTimeLower != null">
+				and order_time &gt; #{orderTimeLower}
+			</if>
+			<if test="merchantId != null"> 
+				and merchant_id = #{merchantId}
+			</if>
+			<if test="merchantName != null">
+				and merchant_name = #{merchantName}
+			</if>
+			<if test="taskType != null">
+				and task_type = #{taskType}
+			</if>
+			<if test="taskTypeList != null">
+				and
+                task_type in
+                <foreach collection="taskTypeList" item="item"
+                         separator="," close=")" open="(">#{item,jdbcType=VARCHAR}
+                </foreach>
+			</if>
+		</trim>
+		
+		order by order_time desc 
+		
+	</select>
+
+	<update id="updateEntity" parameterType="java.util.Map">
+		update tb_shop_task
+		<trim suffixOverrides = ",">
+		<set>
+			<if test="id != null">
+				id=#{id},
+			</if>
+			<if test="merchantOrderId != null">
+				merchant_order_id=#{merchantOrderId},
+			</if>
+			<if test="bonus != null">
+				bonus=#{bonus},
+			</if>
+			<if test="openId != null">
+				openid=#{openId},
+			</if>
+			<if test="orderStatus != null">
+				order_status=#{orderStatus},
+			</if>
+			<if test="orderTimeUpper != null">
+				order_time &lt; #{orderTimeUpper},
+			</if>
+			<if test="orderTimeLower != null">
+				orderTime &gt; #{orderTimeLower},
+			</if>
+			<if test="points != null">
+				points = #{points},
+			</if>
+			<if test="taskInfo != null">
+				task_info = #{taskInfo},
+			</if>
+			<if test="taskType != null">
+				task_type = #{taskType},
+			</if>
+		</set>
+		</trim>
+		where id = #{id}
+	</update>
+	
+	<select id="getDailyCashAndTotalCash" parameterType="java.util.Map" resultMap = "BaseResultMap">
+
+	select 
+	sum(case when order_time &gt;= #{orderTimeLower} and order_time &lt; #{orderTimeUpper} then price else 0 end) as 'todayCash',
+	sum(case when order_status = '0' then price else 0 end ) as 'availCash',
+	sum(price) as 'totalCash'
+	from tb_shop_task
+	where openId = #{openId}
+		
+	</select>
+	
+</mapper>

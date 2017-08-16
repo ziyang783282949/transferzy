@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UrlMapping>
+	<Mappers>
+		<Mapper>
+			<name>登录接口</name>
+			<path>/auth/login</path>
+			<method>GET</method>
+			<priority>1</priority>
+		</Mapper>
+		<Mapper>
+			<name>订单列表接口</name>
+			<path>/auth/orderList</path>
+			<priority>2</priority>
+		</Mapper>
+		<Mapper>
+			<name>用户提现接口</name>
+			<path>/auth/withdraw</path>
+			<method>GET</method>
+			<priority>1</priority>
+		</Mapper>
+		<Mapper>
+			<name>用户提现接口</name>
+			<path>/auth/withdrawForAdmin</path>
+			<method>GET</method>
+			<priority>1</priority>
+		</Mapper>
+		<Mapper>
+			<name>提现列表接口</name>
+			<path>/auth/withdrawList</path>
+			<method>GET</method>
+			<priority>1</priority>
+		</Mapper>
+		<Mapper>
+			<name>提现列表接口</name>
+			<path>/auth/withdrawListForAdmin</path>
+			<method>GET</method>
+			<priority>1</priority>
+		</Mapper>
+	</Mappers>
+
+</UrlMapping>

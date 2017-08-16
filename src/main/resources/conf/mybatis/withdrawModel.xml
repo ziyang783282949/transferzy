@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!--Converted at: Mon Aug 20 17:02:07 
+	CST 2012 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="WithdrawModel">
+
+	<resultMap id="BaseResultMap" type="WithdrawModel">
+		<id column="id" jdbcType="DECIMAL" property="id" />
+		<result column="openid" jdbcType="VARCHAR" property="openId" />
+		<result column="order_time" jdbcType="TIMESTAMP" property="orderTime" />
+		<result column="pay_success_time" jdbcType="TIMESTAMP" property="paySuccessTime" />
+		<result column="status" jdbcType="DECIMAL" property="status" />
+		<result column="pay_amount" jdbcType="DECIMAL" property="payAmount" />
+		<result column="amount" jdbcType="DECIMAL" property="amount" />
+		<result column="points" jdbcType="DECIMAL" property="points" />
+		<result column="real_name" jdbcType="VARCHAR" property="realName" />
+		<result column="number" jdbcType="VARCHAR" property="number" />
+		<result column="pay_info" jdbcType="VARCHAR" property="payInfo" />
+		<result column="card_no" jdbcType="VARCHAR" property="cardNo" />
+	</resultMap>
+
+	<insert id="addEntity" parameterType="java.util.Map">
+		insert into 
+		tb_shop_withdraw(
+			openid,order_time,status,pay_amount,points,pay_success_time,amount,type
+			,real_name,number,card_no
+		)values(
+			#{openId},#{orderTime},#{status},#{payAmount},#{points},#{paySuccessTime},#{amount},#{type}
+			,#{realName},#{number},#{cardNo}
+		)
+		
+	</insert>
+
+	<insert id="findEntityList" parameterType="java.util.List">
+		
+	</insert>
+	
+	<select id="findEntityListByCond" parameterType="java.util.Map" resultMap="BaseResultMap">
+	
+		select * from tb_shop_withdraw
+		<trim prefix="where" prefixOverrides="and" >
+			
+			<if test="id != null">
+				and id=#{id} 
+			</if>
+			<if test="openId != null">
+				and openid=#{openId}
+			</if>
+			<if test="status != null">
+				and status=#{status}
+			</if>
+			<if test="orderTimeUpper != null">
+				and order_time &lt; #{orderTimeUpper}
+			</if>
+			<if test="orderTimeLower != null">
+				and order_time &gt;= #{orderTimeLower}
+			</if>
+			<if test="paySuccessTimeUpper != null">
+				and pay_success_time &lt; #{paySuccessTimeUpper}
+			</if>
+			<if test="paySuccessTimeLower != null">
+				and pay_success_time &gt;= #{paySuccessTimeLower}
+			</if>
+		</trim>
+		
+		order by order_time desc
+		
+	</select>
+
+	<update id="updateEntity" parameterType="java.util.Map">
+		update tb_shop_withdraw
+		<trim suffixOverrides = ",">
+		<set>
+			<if test="openId != null">
+				openid=#{openId},
+			</if>
+			<if test="status != null">
+				status=#{status},
+			</if>
+			<if test="paySuccessTime != null">
+				pay_success_time=#{paySuccessTime},
+			</if>
+			<if test="payAmount != null">
+				pay_amount=#{payAmount},
+			</if>
+			<if test="amount != null">
+				amount=#{amount},
+			</if>
+			<if test="points != null">
+				points = #{points},
+			</if>
+			<if test="realName != null">
+				real_name = #{realName},
+			</if>
+			<if test="number != null">
+				number = #{number},
+			</if>
+			<if test="payInfo != null">
+				pay_info = #{payInfo},
+			</if>
+		</set>
+		</trim>
+		where id = #{id}
+	</update>
+	
+</mapper>

@@ -1,0 +1,364 @@
+body, div, ul, ol, li, dl, dt, dd, blockquote, p,
+        form, legend, select, input, textarea, th, td,
+        pre, h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        h1, h2, h3, div, li, p, menu, button {
+            font-size: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        ol, ul {
+            list-style: none;
+        }
+
+        article, aside, details, figcaption, figure, footer, header, nav, section {
+            display: block;
+        }
+
+        video, audio, canvas, iframe {
+            max-width: 100%;
+            height: auto;
+        }
+        body, input, select, textarea {
+            font: 14px/1.5 "微软雅黑", Arial, Helvetica, sans-serif;
+            line-height: 1.5;
+        }
+        .left{
+            float: left;
+        }
+        .right{
+            /* float: right; */
+            width: 60px;
+            margin: 0 auto;
+            margin-top:15%;
+            /* margin-top: 10%; */
+            height: 60px;
+            box-sizing: border-box;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            -ms-interpolation-mode: bicubic; /* 针对windows平台缩放图片可能失真现象 */
+        }
+
+        :link, :visited {
+            text-decoration: none;
+        }
+
+        img, fieldset {
+            border: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .mask{
+            position:fixed;
+            top:0px;
+            left:0px;
+            width:100%;
+            height:100%;
+            background-color:#000;
+            opacity:0.8;
+            z-index:3;
+        }
+        .img{
+            position:absolute;
+            top:0px;
+            left:0px;
+            width:100%;
+            height:50%;
+            background-image:url(aa.png);
+            background-repeat:no-repeat;
+            background-size:100% auto;
+            z-index:10;
+        }
+        @font-face {
+            font-family: "myFont";
+            src:url("font/FZY3JW.TTF")  format('ttf');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body{
+            background:#459dff;
+            background-image:url(bg.jpg);
+            background-size: 100% 100%;
+            letter-spacing: 2px;
+            overflow: hidden;
+            /*font-family:myFont;*/
+            overflow-y:scroll ;
+        }
+        header{
+            height: 92px;
+            line-height: 92px;
+            margin-top: 7%;
+        }
+        img.logo{
+            /* margin-right:0px; */
+            /* width: 40px; */
+            /* height: 40px; */
+            /* border: 1px solid #fff; */
+            /* border-radius: 8px; */
+            /* box-shadow: 1px 1px 5px #fff; */
+        }
+        .main{
+            text-align: center;
+            color: #fff;
+        }
+        .small{
+            font-size: 22px;
+            margin-top: 10%;
+            color: #eaeaea;
+        }
+        .middle{
+            font-size: 30px;
+            color: #eaeaea;
+        }
+        .big{
+            font-size: 52px;
+        }
+        .bold{
+            font-weight: bold;
+        }
+        .tit{
+            width: 100%;
+            height: 100px;
+            background: url("text.png") center no-repeat;
+            position: absolute;
+            z-index: 1;
+            background-size: 207px 55px;
+            top: 20%;
+        }
+        .bag{
+            width: 100%;
+            height: 200px;
+            background: url("function.png") center no-repeat;
+            position: absolute;
+            top: 40%;
+            background-size: 150px 105px;
+        }
+        .load{
+            width:100%;
+            position: absolute;
+            top: 85%;
+        }
+        footer .bg{
+            width: 100%;
+            height: 80px;
+            position: fixed;
+            bottom: 0;
+            z-index: 1;
+            background: #000;
+            opacity: 0.5;
+        }
+        footer .index2{
+            width: 100%;
+            height: 80px;
+            position: fixed;
+            bottom: 0;
+            z-index: 2;
+            color: #fff;
+            font-size: 16px;
+            line-height: 80px;
+        }
+        footer .index2 img{
+            margin:0 10px 0 20px;
+        }
+        .load2{
+            margin-right: 20px;
+        }
+        .clearfix2{
+            padding: 6px 10px;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 3px;
+        }
+        footer #close{
+            width: 26px;
+            height: 26px;
+            background: url("/invitation/img/close.png") center no-repeat;
+            position: fixed;
+            z-index: 3;
+            right: 0;
+            bottom: 80px;
+            cursor: pointer;
+        }
+        .title{
+            width: 100%;
+            text-align: center;
+            margin: 0 10px;
+            background: url("/invitation/img/dot-line2.png") left no-repeat;
+            height: 26px;
+        }
+        .title div:first-child img.word2{
+            max-height: 20px;
+        }
+        .clearfix{
+            display: inline-block;
+            width: 300px;
+            height: 70px;
+            background: url("download.png") center no-repeat;
+            text-indent: -9999px;
+            background-size: 182px 45px;
+        }
+        .clearfix2:hover,.clearfix2:active{
+            color: #fff;
+            box-shadow: 1px 1px 5px #fff;
+            font-size: 14px;
+        }
+        .center{
+            width: 100%;
+            position: absolute;
+            top: 40%;
+        }
+        footer ul li{
+            float: left;
+            width: 16.6%;
+            height:51px;
+        }
+        footer ul li.zfb{
+            background: url("/invitation/img/zfb.png") center no-repeat;
+        }
+        footer ul li.qq{
+            background: url("/invitation/img/qq.png") center no-repeat;
+        }
+        footer ul li.mobile{
+            background: url("/invitation/img/mobile.png") center no-repeat;
+        }
+        footer ul li.tel{
+            background: url("/invitation/img/tel.png") center no-repeat;
+        }
+        footer ul li.un{
+            background: url("/invitation/img/un.png") center no-repeat;
+        }
+        footer ul li.web{
+            background: url("/invitation/img/web.png") center no-repeat;
+        }
+        footer ul li.zfb,footer ul li.qq,footer ul li.mobile,footer ul li.tel,footer ul li.un,footer ul li.web{
+            background-size: 130px 35px;
+        }
+        footer{
+            position: absolute;
+            /*background: #FEEC9A;*/
+            bottom: 0;
+            width: 100%;
+            /*line-height: 100px;*/
+        }
+            @media screen and (max-height:835px){
+            footer {
+                top: 820px;
+            }
+        }
+            @media screen and (max-height: 768px) {
+            .tit{
+                height: 100px;
+                background-size: 207px 55px;
+                top: 31%;
+            }
+            .bag{
+                height: 200px;
+                background-size: 150px 105px;
+                top: 37%;
+            }
+            .load{
+                width:100%;
+                position: absolute;
+                top: 85%;
+            }
+            footer {
+                top: 600px;
+            }
+        }
+        @media screen and (max-width: 1000px) {
+            /*.tit{*/
+                /*height: 190px;*/
+                /*background-size: 324px 190px ;*/
+            /*}*/
+            /*.bag{*/
+                /*height: 400px;*/
+                /*background-size: 320px 400px ;*/
+            /*}*/
+            /*.load{*/
+                /*width:100%;*/
+                /*position: absolute;*/
+                /*top: 460px;*/
+            /*}*/
+            img.logo{
+                width: 60px;
+                height: 60px;
+            }
+            .title {
+                background: url("/invitation/img/dot-line1.png") left no-repeat;
+            }
+        }
+        @media screen and (max-width: 540px) {
+            .big{
+                font-size: 42px;
+            }
+            .big img{
+                width:60px;
+                height: 60px;
+            }
+            .load{
+                bottom:130px ;
+            }
+            footer ul li{
+                height: 40px;
+                min-width: 100px;
+                width: 33%;
+            }
+            footer ul li.zfb,footer ul li.qq,footer ul li.mobile,footer ul li.tel,footer ul li.un{
+                background-size: 90px 28px;
+            }
+            footer ul li.web{
+                background-size: 78px 37px;
+            }
+            .tit{
+                height: 100px;
+                background-size: 207px 55px;
+                top: 20%;
+            }
+            .bag{
+                height: 200px;
+                background-size: 150px 105px;
+                top: 40%;
+            }
+            .load{
+                width:100%;
+                position: absolute;
+                top: 79%;
+            }
+            footer{
+                top: 550px;
+            }
+            footer .bg{
+                height: 50px;
+            }
+            footer .index2{
+                height: 50px;
+                line-height: 50px;
+                font-size: 12px;
+            }
+            footer .index2 img{
+                margin:0 10px 0 5px;
+            }
+            .load2{
+                margin-right: 5px;
+            }
+            footer #close{
+                bottom: 50px;
+            }
+        }
+        a[title='站长统计']{
+            color: transparent;
+        }

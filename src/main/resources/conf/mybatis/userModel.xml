@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?><!--Converted at: Mon Aug 20 17:02:07 
+	CST 2012 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserModel">
+
+	<resultMap id="BaseResultMap" type="UserModel">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="card_no" jdbcType="VARCHAR" property="cardNo" />
+		<result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+		<result column="sex" jdbcType="DECIMAL" property="sex" />
+		<result column="open_id" jdbcType="VARCHAR" property="openId" />
+		<result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+		<result column="master_score" jdbcType="INTEGER" property="masterScore" />
+		<result column="mtt_score" jdbcType="INTEGER" property="mttScore" />
+		<result column="score" jdbcType="INTEGER" property="score" />
+		<result column="city" jdbcType="VARCHAR" property="city" />
+		<result column="user_level" jdbcType="INTEGER" property="userLevel" />
+		<result column="buy_in" jdbcType="INTEGER" property="buyIn" />
+		<result column="buy_out" jdbcType="INTEGER" property="buyOut" />
+		<result column="real_name" jdbcType="VARCHAR" property="realName" />
+		<result column="cert_no" jdbcType="VARCHAR" property="certNo" />
+		<result column="phone" jdbcType="VARCHAR" property="phone" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		
+		<result column="cur_master_score" jdbcType="INTEGER" property="curMasterScore" />
+		<result column="last_master_score" jdbcType="INTEGER" property="lastMasterScore" />
+		<result column="cur_mtt_score" jdbcType="INTEGER" property="curMttScore" />
+		<result column="last_mtt_score" jdbcType="INTEGER" property="lastMttScore" />
+		<result column="master_change" jdbcType="INTEGER" property="masterChange" />
+		<result column="mtt_change" jdbcType="INTEGER" property="mttChange" />
+		
+	</resultMap>
+
+	<insert id="addEntity" parameterType="java.util.Map">
+		insert into 
+		tb_user(
+			card_no,nick_name,sex,open_id,img_url,city,create_time
+		)values(
+			#{cardNo},#{nickName},#{sex},#{openId},#{imgUrl},#{city},#{createTime}
+		)
+	</insert>
+
+	<select id="findEntityListByCond" parameterType="java.util.Map" resultMap="BaseResultMap">
+	
+		select * from tb_user
+		<trim prefix="where" prefixOverrides="and" >
+			
+			<if test="id != null">
+				and id=#{id} 
+			</if>
+			<if test="cardNo != null">
+				and card_no=#{cardNo} 
+			</if>
+			<if test="openId != null">
+				and open_id=#{openId}
+			</if>
+			<if test="nickName != null">
+				and nick_name=#{nickName}
+			</if>
+			<if test="city != null">
+				and city=#{city}
+			</if>
+			<if test="createTimeUpper != null">
+				and create_time &lt; #{createTimeUpper}
+			</if>
+			<if test="lastLoginTimeLower != null">
+				and create_time &gt; #{lastLoginTimeLower}
+			</if>
+			<if test="sex != null">
+				and sex = #{sex}
+			</if>
+			<if test="cardNos != null">
+				and card_no in 
+				<foreach collection="cardNos" index="index" item="item" open="("
+    				separator="," close=")">
+   					 #{item}
+  				</foreach> 
+			</if>
+		</trim>
+		
+	</select>
+	
+	
+	
+	
+	
+
+	<update id="updateEntity" parameterType="java.util.Map">
+		update tb_user
+		<trim suffixOverrides = ",">
+		<set>
+			<if test="sex != null">
+				sex=#{sex},
+			</if>
+			<if test="openId != null">
+				openid=#{openId},
+			</if>
+			<if test="userLevel != null">
+				user_level=#{userLevel},
+			</if>
+			<if test="phone != null">
+				phone=#{phone},
+			</if>
+			<if test="score != null">
+				score = #{score},
+			</if>
+			<if test="buyIn != null">
+				buy_in = #{buyIn},
+			</if>
+			<if test="buyOut != null">
+				buy_out = #{buyOut},
+			</if>
+			<if test="realName != null">
+				real_name = #{realName},
+			</if>
+			<if test="certNo != null">
+				cert_no = #{certNo},
+			</if>
+			<if test="phone != null">
+				phone = #{phone},
+			</if>
+			<if test="curMttScore != null">
+				cur_mtt_score = #{curMttScore},
+			</if>
+			<if test="lastMttScore != null">
+				last_mtt_score = #{lastMttScore},
+			</if>
+			<if test="curMasterScore != null">
+				cur_master_score = #{curMasterScore},
+			</if>
+			<if test="lastMasterScore != null">
+				last_master_score = #{lastMasterScore},
+			</if>
+			<if test="masterChange != null">
+				master_change = #{masterChange},
+			</if>
+			<if test="mttChange != null">
+				mtt_change = #{mttChange},
+			</if>
+		</set>
+		</trim>
+		where card_no = #{cardNo}
+	</update>
+	
+	
+	
+	<select id="selectMttScore" resultMap="BaseResultMap">
+	
+		select nick_name,cur_mtt_score from tb_user
+		order by cur_mtt_score desc
+		
+	</select>
+	<select id="selectMasterScore" resultMap="BaseResultMap">
+	
+		select nick_name,cur_master_score from tb_user
+		order by cur_master_score desc
+		
+	</select>
+	
+	
+	
+</mapper>

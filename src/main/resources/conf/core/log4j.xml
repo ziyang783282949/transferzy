@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+	<!-- 控制台输出 -->
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%c] - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="DEBUG" />
+		</filter>
+	</appender>
+	
+	<appender name="fileAppender"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${catalina.home}/logs/system.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%c] - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="debug" />
+		</filter>
+	</appender>
+
+	<appender name="inOutAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${catalina.home}/logs/inOut.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%c] - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="INFO" />
+		</filter>
+	</appender>
+	
+	<appender name="outInAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${catalina.home}/logs/outIn.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%c] - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="INFO" />
+		</filter>
+	</appender>
+	
+	<appender name="errorAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${catalina.home}/logs/error.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%c] - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="INFO" />
+		</filter>
+	</appender>
+	
+	<appender name="actionAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${catalina.home}/logs/action.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%c] - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="INFO" />
+		</filter>
+	</appender>
+
+	<category name="inOut" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="inOutAppender" />
+	</category>
+
+	<category name="outIn" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="outInAppender" />
+	</category>
+	
+	<category name="error" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="errorAppender" />
+	</category>
+	
+	<category name="action" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="actionAppender" />
+	</category>
+	
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="stdout" />
+		<appender-ref ref="fileAppender" />
+	</root>
+</configuration>
