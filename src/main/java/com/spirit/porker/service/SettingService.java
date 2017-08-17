@@ -21,46 +21,48 @@ import org.apache.commons.lang.time.DateUtils;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.spirit.porker.dao.BlindDao;
-import com.spirit.porker.dao.CreditsDao;
-import com.spirit.porker.dao.EventDao;
-import com.spirit.porker.dao.OrderDao;
 import com.spirit.porker.dao.OrderIdGenerator;
-import com.spirit.porker.dao.RewardDao;
-import com.spirit.porker.dao.ShopDao;
-import com.spirit.porker.dao.TicketDao;
 import com.spirit.porker.dao.UserDao;
+import com.spirit.porker.dao.pagination.PaginationList;
+import com.spirit.porker.enums.ResultType;
+import com.spirit.porker.model.UserModel;
+import com.spirit.porker.vo.request.SelectNameRequest;
+import com.spirit.porker.vo.response.BaseResponse;
+import com.spirit.porker.vo.response.SelectNameResponse;
 
 @Service
 public class SettingService {
-
-	@Resource
-	BlindDao blindDao;
-
-	@Resource
-	EventDao eventDao;
-
+	
 	@Resource
 	UserDao userDao;
 
 	@Resource
-	OrderDao orderDao;
-
-	@Resource
-	RewardDao rewardDao;
-
-	@Resource
-	TicketDao ticketDao;
-
-	@Resource
-	ShopDao shopDao;
-
-	@Resource
 	OrderIdGenerator orderIdGenerator;
 
-	@Resource
-	CreditsDao creditsDao;
-
+	public BaseResponse<SelectNameResponse> selectName(SelectNameRequest pojo){
+		SelectNameResponse data=new SelectNameResponse();
+		BaseResponse<SelectNameResponse> result=new BaseResponse<>(ResultType.succes);
+		result.setData(data);
+		
+		Map<String,Object> cond=new HashMap<>();
+		cond.put("id", pojo.getId());
+		PaginationList<UserModel> userModel=userDao.findEntityListByCond(cond, null);
+		if (userModel == null || userModel.size() == 0) {
+			result.setCode(ResultType.fail.getCode());
+			result.setDesc("查询不到该用户，请重新输入");
+			return result;
+		}
+		UserModel user=userModel.get(0);
+		
+		data.setId(user.getId());
+		data.setUsername(user.getUsername());
+		data.setPassword(user.getPassword());
+		data.setSex(user.getSex());
+		data.setUrlUserIcon(user.getUrlUserIcon());
+		
+		return result;
+		
+	}
 	
 
 	/*public BaseResponse<Object> verifyBuyCredits(VerifyBuyCreditsRequest pojo) {

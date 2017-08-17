@@ -4,28 +4,10 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.spirit.porker.model.MessageModel" alias="MessageModel" />
-		<typeAlias type="com.spirit.porker.model.EventModel" alias="EventModel" />
-		<typeAlias type="com.spirit.porker.model.BlindModel" alias="BlindModel" />
-		<typeAlias type="com.spirit.porker.model.OrderModel" alias="OrderModel" />
 		<typeAlias type="com.spirit.porker.model.UserModel" alias="UserModel" />
-		<typeAlias type="com.spirit.porker.model.RewardModel" alias="RewardModel" />
-		<typeAlias type="com.spirit.porker.model.AdminModel" alias="AdminModel" />
-		<typeAlias type="com.spirit.porker.model.TicketModel" alias="TicketModel" />
-		<typeAlias type="com.spirit.porker.model.ShopModel" alias="ShopModel" />
-		<typeAlias type="com.spirit.porker.model.CreditsModel" alias="CreditsModel" />
 	</typeAliases>
 	<mappers>
-		<mapper resource="conf/mybatis/messageModel.xml" />
-		<mapper resource="conf/mybatis/eventModel.xml" />
-		<mapper resource="conf/mybatis/blindModel.xml" />
 		<mapper resource="conf/mybatis/userModel.xml" />
-		<mapper resource="conf/mybatis/orderModel.xml" />
-		<mapper resource="conf/mybatis/rewardModel.xml" />
-		<mapper resource="conf/mybatis/adminModel.xml" />
-		<mapper resource="conf/mybatis/ticketModel.xml" />
-		<mapper resource="conf/mybatis/shopModel.xml" />
-		<mapper resource="conf/mybatis/creditsModel.xml" />
 		
 	</mappers>
 </configuration>

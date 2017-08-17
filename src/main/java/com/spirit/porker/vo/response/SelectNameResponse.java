@@ -1,13 +1,11 @@
-package com.spirit.porker.model;
+package com.spirit.porker.vo.response;
 
-public class AdminModel {
-	/**
-	 * 序列
-	 */
+public class SelectNameResponse {
 	private int id;
 	private String username;
 	private String password;
-	private String token;
+	private String sex;
+	private String urlUserIcon;
 
 	public int getId() {
 		return id;
@@ -33,12 +31,20 @@ public class AdminModel {
 		this.password = password;
 	}
 
-	public String getToken() {
-		return token;
+	public String getSex() {
+		return sex;
 	}
 
-	public void setToken(String token) {
-		this.token = token;
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public String getUrlUserIcon() {
+		return urlUserIcon;
+	}
+
+	public void setUrlUserIcon(String urlUserIcon) {
+		this.urlUserIcon = urlUserIcon;
 	}
 
 }
