@@ -20,8 +20,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.alibaba.fastjson.JSON;
 import com.spirit.porker.enums.ResultType;
 import com.spirit.porker.model.AdminModel;
+import com.spirit.porker.vo.request.LoginRequest;
 import com.spirit.porker.vo.response.BaseResponse;
-import com.spirit.porker.vo.response.LoginRequest;
 
 @Controller
 public class HomeController {

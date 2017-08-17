@@ -59,16 +59,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	<!-- web service 用于微信支付回调等，微信的服务以webservice形式进行 -->
-	<servlet>
-		<servlet-name>porker_webservice</servlet-name>
-		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
-		<init-param>  
-      		<param-name>config-location</param-name>  
-      		<param-value>classpath:conf/core/webservice.xml</param-value>  
-  	 	</init-param> 
-		<load-on-startup>2</load-on-startup>
-	</servlet>
+	
 	
 	<servlet-mapping>
 		<servlet-name>porker</servlet-name>
@@ -82,10 +73,7 @@
 		<url-pattern>*.html</url-pattern> </servlet-mapping> <servlet-mapping> <servlet-name>default</servlet-name> 
 		<url-pattern>*.htm</url-pattern> </servlet-mapping> -->
 	
-	<servlet-mapping>
-		<servlet-name>porker_webservice</servlet-name>
-		<url-pattern>/service/*</url-pattern>
-	</servlet-mapping>
+	
 	
 	
 </web-app>

@@ -9,18 +9,7 @@ import org.apache.commons.lang.StringUtils;
 import com.spirit.porker.annotation.NotEmpty;
 import com.spirit.porker.vo.response.PojoValidatorErrors;
 
-public abstract class BaseRequest {
-	
-	/**
-	 * 用户在微信小程序登录后的openId信息
-	 */
-	private String openId;
-	
-	/**
-	 * 用户在微信小程序登录后的openId信息
-	 */
-	private String sessionToken;
-	
+public class BaseRequest {
 	/**
 	 * 参数校验
 	 * @return
@@ -63,22 +52,5 @@ public abstract class BaseRequest {
 		return null;
 	}
 
-	public String getOpenId() {
-		return openId;
-	}
-
-	public void setOpenId(String openId) {
-		this.openId = openId;
-	}
-
-	public String getSessionToken() {
-		return sessionToken;
-	}
-
-	public void setSessionToken(String sessionToken) {
-		this.sessionToken = sessionToken;
-	}
 	
-	
-
 }

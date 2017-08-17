@@ -22,12 +22,12 @@
 		<property name="queueCapacity" value="${pushMessage.taskexecutor.queueCapacity}" />
 	</bean>
 	
-	<bean id="wechatServiceImp" class="com.spirit.porker.agent.wechat.service.WechatService"></bean>
+	<!-- <bean id="wechatServiceImp" class="com.spirit.porker.agent.wechat.service.WechatService"></bean>
 	<bean id="uionOpenApiFactory" class="com.spirit.porker.agent.UionOpenApiFactory">
 		<property name="openMap">
 			<map>
 				<entry key="0" value-ref="wechatServiceImp" />
 			</map>
 		</property>
-	</bean>
+	</bean> -->
 </beans>
