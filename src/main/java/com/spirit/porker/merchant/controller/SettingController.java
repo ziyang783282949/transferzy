@@ -16,6 +16,7 @@ import com.spirit.porker.service.SettingService;
 import com.spirit.porker.util.LoggerUtil;
 import com.spirit.porker.vo.request.SelectNameRequest;
 import com.spirit.porker.vo.response.BaseResponse;
+import com.spirit.porker.vo.response.RegistResponse;
 import com.spirit.porker.vo.response.SelectNameResponse;
 
 @Controller
@@ -24,39 +25,50 @@ public class SettingController {
 	@Resource
 	SettingService settingService;
 
+	/*
+	 * @RequestMapping("/verifyBuyCredits")
+	 * 
+	 * @ResponseBody public String VerifyBuyCredits(VerifyBuyCreditsRequest pojo) {
+	 * 
+	 * BaseResponse<Object> result = null;
+	 * 
+	 * try { result = settingService.verifyBuyCredits(pojo); } catch (Exception e) {
+	 * LoggerUtil.error("微信回调购买积分失败", e); result = new
+	 * BaseResponse<Object>(ResultType.fail);
+	 * 
+	 * } return JSON.toJSONString(result); }
+	 */
 
-	
-	
-	/*@RequestMapping("/verifyBuyCredits")
+	/*
+	 * @RequestMapping("/UserLogin")
+	 * 
+	 * @ResponseBody public String selectName(@RequestBody UserModel pojo) {
+	 * 
+	 * BaseResponse<SelectNameResponse> result = null;
+	 * 
+	 * try { result = settingService.selectName(pojo); } catch (Exception e) {
+	 * LoggerUtil.error("微信回调购买积分失败", e); result = new
+	 * BaseResponse<SelectNameResponse>(ResultType.fail);
+	 * 
+	 * } return JSON.toJSONString(result);
+	 * 
+	 * }
+	 */
+
+	@RequestMapping("/UserRegist")
 	@ResponseBody
-	public String VerifyBuyCredits(VerifyBuyCreditsRequest pojo) {
+	public String userRegist(@RequestBody UserModel pojo) {
 
-		BaseResponse<Object> result = null;
+		BaseResponse<RegistResponse> result = null;
 
 		try {
-			result = settingService.verifyBuyCredits(pojo);
+			result = settingService.userRegist(pojo);
 		} catch (Exception e) {
-			LoggerUtil.error("微信回调购买积分失败", e);
-			result = new BaseResponse<Object>(ResultType.fail);
+			LoggerUtil.error("注册失败", e);
+			result = new BaseResponse<RegistResponse>(ResultType.fail);
 
 		}
 		return JSON.toJSONString(result);
-	}*/
-	
-	@RequestMapping("/UserLogin")
-	@ResponseBody
-	public String selectName(@RequestBody UserModel pojo) {
 
-		BaseResponse<SelectNameResponse> result = null;
-
-		try {
-			result = settingService.selectName(pojo);
-		} catch (Exception e) {
-			LoggerUtil.error("微信回调购买积分失败", e);
-			result = new BaseResponse<SelectNameResponse>(ResultType.fail);
-
-		}
-		return JSON.toJSONString(result);
-	
 	}
 }
