@@ -1,14 +1,14 @@
 package com.spirit.porker.vo.request;
 
 public class SelectNameRequest {
-	private int id;
+	private String info;
 
-	public int getId() {
-		return id;
+	public String getInfo() {
+		return info;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setInfo(String info) {
+		this.info = info;
 	}
 
 }

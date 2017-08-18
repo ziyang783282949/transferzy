@@ -5,11 +5,13 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.spirit.porker.enums.ResultType;
+import com.spirit.porker.model.UserModel;
 import com.spirit.porker.service.SettingService;
 import com.spirit.porker.util.LoggerUtil;
 import com.spirit.porker.vo.request.SelectNameRequest;
@@ -41,9 +43,9 @@ public class SettingController {
 		return JSON.toJSONString(result);
 	}*/
 	
-	@RequestMapping("/selectName")
+	@RequestMapping("/UserLogin")
 	@ResponseBody
-	public String selectName(SelectNameRequest pojo) {
+	public String selectName(@RequestBody UserModel pojo) {
 
 		BaseResponse<SelectNameResponse> result = null;
 

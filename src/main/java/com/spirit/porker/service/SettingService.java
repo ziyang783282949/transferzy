@@ -19,6 +19,7 @@ import javax.annotation.Resource;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.alibaba.fastjson.JSON;
 import com.spirit.porker.dao.OrderIdGenerator;
@@ -39,13 +40,15 @@ public class SettingService {
 	@Resource
 	OrderIdGenerator orderIdGenerator;
 
-	public BaseResponse<SelectNameResponse> selectName(SelectNameRequest pojo){
+	public BaseResponse<SelectNameResponse> selectName(@RequestBody UserModel pojo){
 		SelectNameResponse data=new SelectNameResponse();
 		BaseResponse<SelectNameResponse> result=new BaseResponse<>(ResultType.succes);
 		result.setData(data);
 		
+		//UserModel userMo=JSON.parseObject(pojo.getInfo(), UserModel.class);
 		Map<String,Object> cond=new HashMap<>();
-		cond.put("id", pojo.getId());
+		
+		cond.put("id", "");
 		PaginationList<UserModel> userModel=userDao.findEntityListByCond(cond, null);
 		if (userModel == null || userModel.size() == 0) {
 			result.setCode(ResultType.fail.getCode());

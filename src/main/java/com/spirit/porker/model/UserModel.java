@@ -8,6 +8,36 @@ public class UserModel {
 	private String password;
 	private String sex;
 	private String urlUserIcon;
+	private int credits;
+	private int changeCredits;
+	private int contributionCredits;
+	
+	
+	
+	
+	public int getCredits() {
+		return credits;
+	}
+
+	public void setCredits(int credits) {
+		this.credits = credits;
+	}
+
+	public int getChangeCredits() {
+		return changeCredits;
+	}
+
+	public void setChangeCredits(int changeCredits) {
+		this.changeCredits = changeCredits;
+	}
+
+	public int getContributionCredits() {
+		return contributionCredits;
+	}
+
+	public void setContributionCredits(int contributionCredits) {
+		this.contributionCredits = contributionCredits;
+	}
 
 	public int getId() {
 		return id;
