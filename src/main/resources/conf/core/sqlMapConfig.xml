@@ -5,9 +5,11 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.spirit.porker.model.UserModel" alias="UserModel" />
+		<typeAlias type="com.spirit.porker.model.SimpleSessionEntity" alias="SimpleSession" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="conf/mybatis/userModel.xml" />
+		<mapper resource="conf/mybatis/simpleSession.xml" />
 		
 	</mappers>
 </configuration>
