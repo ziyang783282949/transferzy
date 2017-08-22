@@ -16,6 +16,9 @@ import java.util.TreeMap;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.stereotype.Service;
@@ -29,6 +32,7 @@ import com.spirit.porker.enums.ResultType;
 import com.spirit.porker.model.UserModel;
 import com.spirit.porker.vo.request.RegistRequest;
 import com.spirit.porker.vo.response.BaseResponse;
+import com.spirit.porker.vo.response.LoginResponse;
 import com.spirit.porker.vo.response.RegistResponse;
 
 @Service
@@ -40,6 +44,31 @@ public class SettingService {
 	@Resource
 	OrderIdGenerator orderIdGenerator;
 
+	public BaseResponse<LoginResponse> login(@RequestBody UserModel pojo,HttpServletRequest request,HttpServletResponse response){
+		BaseResponse<LoginResponse> result=new BaseResponse<>(ResultType.succes);
+		LoginResponse data=new LoginResponse();
+		result.setData(data);
+		
+		Map<String,Object> cond=new HashMap<>();
+		cond.put("username", pojo.getUsername());
+		cond.put("password", pojo.getPassword());
+		List<UserModel> users=userDao.login(cond);
+		if (users == null) {
+			result.setCode(ResultType.unKnowUser.getCode());
+			result.setDesc("用户名或密码错误");
+			return result;
+		}
+		Cookie sessionId=new Cookie("sessionId",UUID.randomUUID().toString());
+		response.addCookie(sessionId);
+		
+		UserModel user=users.get(0);
+		data.setUsername(user.getUsername());
+		data.setPassword(user.getPassword());
+		data.setCookie(sessionId.toString());
+		return result;
+	}
+	
+	
 	
 
 	public BaseResponse<RegistResponse> userRegist(@RequestBody UserModel pojo) {

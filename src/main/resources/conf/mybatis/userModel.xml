@@ -68,7 +68,9 @@
 		where id = #{id}
 	</update>
 	
-	
+	<select id="login" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from tb_user where username=#{username} and password=#{password}
+	</select>
 	
 	
 </mapper>

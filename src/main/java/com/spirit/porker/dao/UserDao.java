@@ -1,6 +1,7 @@
 package com.spirit.porker.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,10 @@ public class UserDao extends BaseDao<UserModel>{
 	}
 	public List<UserModel> selectMasterScore(){
 		List result = this.getSqlSession().selectList("UserModel.selectMasterScore", null);
+		return result;
+	}
+	public List<UserModel> login(Map<String, Object> cond){
+		List result = this.getSqlSession().selectList("UserModel.login", cond);
 		return result;
 	}
 }
