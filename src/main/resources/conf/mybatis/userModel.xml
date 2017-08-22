@@ -13,6 +13,7 @@
 		<result column="credits" jdbcType="INTEGER" property="credits" />
 		<result column="change_credits" jdbcType="INTEGER" property="changeCredits" />
 		<result column="contribution_credits" jdbcType="INTEGER" property="contributionCredits" />
+		<result column="cookie" jdbcType="VARCHAR" property="cookie" />
 		
 	</resultMap>
 
@@ -36,6 +37,12 @@
 			<if test="username != null">
 				and username=#{username} 
 			</if>
+			<if test="session != null">
+				and session=#{session} 
+			</if>
+			<if test="cookie != null">
+				and cookie=#{cookie} 
+			</if>
 		</trim>
 		
 	</select>
@@ -52,6 +59,9 @@
 			</if>
 			<if test="password != null">
 				password=#{password},
+			</if>
+			<if test="cookie != null">
+				cookie=#{cookie},
 			</if>
 		</set>
 		</trim>

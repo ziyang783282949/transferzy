@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.collections.map.HashedMap;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -13,16 +15,22 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 
+import com.spirit.porker.dao.UserDao;
 import com.spirit.porker.dao.admindao.AdminDao;
 import com.spirit.porker.dao.pagination.PaginationList;
 import com.spirit.porker.model.AdminModel;
+import com.spirit.porker.model.UserModel;
 
 public class MyShiroRealm extends AuthorizingRealm {
 
 	@Resource
 	AdminDao adminDao;
+	
+	@Resource
+	UserDao userDao;
 
 	/* 
 	 * DELL
@@ -60,6 +68,22 @@ public class MyShiroRealm extends AuthorizingRealm {
 		if(list!=null && list.size()>0) {
 			//若存在，将此用户存放到登录认证info中  
 			AdminModel user=list.get(0);
+			
+			Session session = SecurityUtils.getSubject().getSession();
+			cond.clear();
+			cond.put("username", uToken.getUsername());
+			PaginationList<UserModel> users = userDao.findEntityListByCond(cond, null);
+			UserModel user2 = users.get(0);
+			
+			//将cookie写入User表
+			UserModel newUser = new UserModel();
+			newUser.setId(user2.getId());
+			newUser.setUsername(user2.getUsername());
+			newUser.setCookie(session.toString());
+			userDao.updateEntity(newUser);
+			
+			
+			
             return new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), getName());  			
 		}
 		return null;

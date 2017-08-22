@@ -7,7 +7,6 @@ public class LoginRequest extends BaseRequest{
 	private String username;
 	@NotEmpty
 	private String password;
-	private String token;
 
 	public String getUsername() {
 		return username;
@@ -25,12 +24,5 @@ public class LoginRequest extends BaseRequest{
 		this.password = password;
 	}
 
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
 
 }

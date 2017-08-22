@@ -28,10 +28,8 @@ import com.spirit.porker.dao.pagination.PaginationList;
 import com.spirit.porker.enums.ResultType;
 import com.spirit.porker.model.UserModel;
 import com.spirit.porker.vo.request.RegistRequest;
-import com.spirit.porker.vo.request.SelectNameRequest;
 import com.spirit.porker.vo.response.BaseResponse;
 import com.spirit.porker.vo.response.RegistResponse;
-import com.spirit.porker.vo.response.SelectNameResponse;
 
 @Service
 public class SettingService {
@@ -42,32 +40,7 @@ public class SettingService {
 	@Resource
 	OrderIdGenerator orderIdGenerator;
 
-	public BaseResponse<SelectNameResponse> selectName(@RequestBody UserModel pojo) {
-		SelectNameResponse data = new SelectNameResponse();
-		BaseResponse<SelectNameResponse> result = new BaseResponse<>(ResultType.succes);
-		result.setData(data);
-
-		// UserModel userMo=JSON.parseObject(pojo.getInfo(), UserModel.class);
-		Map<String, Object> cond = new HashMap<>();
-
-		cond.put("id", "");
-		PaginationList<UserModel> userModel = userDao.findEntityListByCond(cond, null);
-		if (userModel == null || userModel.size() == 0) {
-			result.setCode(ResultType.fail.getCode());
-			result.setDesc("查询不到该用户，请重新输入");
-			return result;
-		}
-		UserModel user = userModel.get(0);
-
-		data.setId(user.getId());
-		data.setUsername(user.getUsername());
-		data.setPassword(user.getPassword());
-		data.setSex(user.getSex());
-		data.setUrlUserIcon(user.getUrlUserIcon());
-
-		return result;
-
-	}
+	
 
 	public BaseResponse<RegistResponse> userRegist(@RequestBody UserModel pojo) {
 		RegistResponse data = new RegistResponse();

@@ -2,11 +2,12 @@
 	CST 2012 -->
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="SimpleSession">
+<mapper namespace="SessionModel">
 
-	<resultMap id="BaseResultMap" type="SimpleSession">
+	<resultMap id="BaseResultMap" type="SessionModel">
 		<id column="id" jdbcType="INTEGER" property="id" />
 		<result column="cookie" jdbcType="VARCHAR" property="cookie" />
+		<!-- <association property="session" javaType="org.apache.shiro.session.mgt.SimpleSession" /> -->
 		<result column="session" jdbcType="VARCHAR" property="session" />
 		
 	</resultMap>

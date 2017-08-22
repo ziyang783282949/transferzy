@@ -14,10 +14,8 @@ import com.spirit.porker.enums.ResultType;
 import com.spirit.porker.model.UserModel;
 import com.spirit.porker.service.SettingService;
 import com.spirit.porker.util.LoggerUtil;
-import com.spirit.porker.vo.request.SelectNameRequest;
 import com.spirit.porker.vo.response.BaseResponse;
 import com.spirit.porker.vo.response.RegistResponse;
-import com.spirit.porker.vo.response.SelectNameResponse;
 
 @Controller
 public class SettingController {

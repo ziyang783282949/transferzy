@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 public class UserModel {
 	private int id;
+	
 	private String username;
 	private String password;
 	private String sex;
@@ -11,10 +12,20 @@ public class UserModel {
 	private int credits;
 	private int changeCredits;
 	private int contributionCredits;
+	private String cookie;
 	
 	
 	
 	
+
+	public String getCookie() {
+		return cookie;
+	}
+
+	public void setCookie(String cookie) {
+		this.cookie = cookie;
+	}
+
 	public int getCredits() {
 		return credits;
 	}
